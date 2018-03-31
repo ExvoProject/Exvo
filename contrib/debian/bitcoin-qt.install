@@ -1,0 +1,6 @@
+usr/local/bin/exvo-qt usr/bin
+share/pixmaps/exvo32.xpm usr/share/pixmaps
+share/pixmaps/exvo16.xpm usr/share/pixmaps
+share/pixmaps/exvo128.png usr/share/pixmaps
+debian/exvo-qt.desktop usr/share/applications
+debian/exvo-qt.protocol usr/share/kde4/services/

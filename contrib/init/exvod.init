@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+#  exvod The exvo core server.
+#
+#
+# chkconfig: 345 80 20
+# description: exvod
+# processname: exvod
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/exvod, see below
+if [ -f /etc/sysconfig/exvod ]; then
+        . /etc/sysconfig/exvod
+fi
+
+RETVAL=0
+
+prog=exvod
+# you can override the lockfile via EXVOD_LOCKFILE in /etc/sysconfig/exvod
+lockfile=${EXVOD_LOCKFILE-/var/lock/subsys/exvod}
+
+# exvod defaults to /usr/bin/exvod, override with EXVOD_BIN
+exvod=${EXVOD_BIN-/usr/bin/exvod}
+
+# exvod opts default to -disablewallet, override with EXVOD_OPTS
+exvod_opts=${EXVOD_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $exvod $exvod_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

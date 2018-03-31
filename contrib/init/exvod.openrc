@@ -1,0 +1,92 @@
+#!/sbin/runscript
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/exvo/.exvo" ]; then
+	EXVOD_DEFAULT_DATADIR="/var/lib/exvo/.exvo"
+else
+	EXVOD_DEFAULT_DATADIR="/var/lib/exvod"
+fi
+
+EXVOD_CONFIGFILE=${EXVOD_CONFIGFILE:-/etc/exvo/exvo.conf}
+EXVOD_PIDDIR=${EXVOD_PIDDIR:-/var/run/exvod}
+EXVOD_PIDFILE=${EXVOD_PIDFILE:-${EXVOD_PIDDIR}/exvod.pid}
+EXVOD_DATADIR=${EXVOD_DATADIR:-${EXVOD_DEFAULT_DATADIR}}
+EXVOD_USER=${EXVOD_USER:-${EXVO_USER:-exvo}}
+EXVOD_GROUP=${EXVOD_GROUP:-exvo}
+EXVOD_BIN=${EXVOD_BIN:-/usr/bin/exvod}
+EXVOD_NICE=${EXVOD_NICE:-${NICELEVEL:-0}}
+EXVOD_OPTS="${EXVOD_OPTS:-${EXVO_OPTS}}"
+
+name="Exvo Core Daemon"
+description="Exvo cryptocurrency P2P network daemon"
+
+command="/usr/bin/exvod"
+command_args="-pid=\"${EXVOD_PIDFILE}\" \
+		-conf=\"${EXVOD_CONFIGFILE}\" \
+		-datadir=\"${EXVOD_DATADIR}\" \
+		-daemon \
+		${EXVOD_OPTS}"
+
+required_files="${EXVOD_CONFIGFILE}"
+start_stop_daemon_args="-u ${EXVOD_USER} \
+			-N ${EXVOD_NICE} -w 2000"
+pidfile="${EXVOD_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${EXVOD_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${EXVOD_USER}:${EXVOD_GROUP}" \
+	"${EXVOD_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${EXVOD_USER}:${EXVOD_GROUP}" \
+	"${EXVOD_PIDDIR}"
+
+	checkpath -f \
+	-o ${EXVOD_USER}:${EXVOD_GROUP} \
+	-m 0660 \
+	${EXVOD_CONFIGFILE}
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if ! grep -qs '^rpcpassword=' "${EXVOD_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run exvod."
+		eerror "The setting must appear in ${EXVOD_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following"
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is also recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Exvo Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}

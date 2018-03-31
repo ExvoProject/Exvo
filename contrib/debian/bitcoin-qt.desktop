@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Exvo Core
+Comment=Connect to the Exvo P2P Network
+Comment[de]=Verbinde mit dem Exvo peer-to-peer Netzwerk
+Comment[fr]=Exvo, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Exvo, eşten eşe kriptografik sanal para birimi
+Exec=exvo-qt %u
+Terminal=false
+Type=Application
+Icon=exvo128
+MimeType=x-scheme-handler/exvo;
+Categories=Office;Finance;

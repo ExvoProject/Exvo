@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Exvo
+Comment=Exvo P2P Cryptocurrency
+Exec=exvo-qt %u
+Terminal=false
+Type=Application
+Icon=exvo128
+MimeType=x-scheme-handler/exvo;
+Categories=Office;Finance;
+Name[en_US]=exvo-qt.desktop

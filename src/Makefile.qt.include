@@ -1,0 +1,498 @@
+# Copyright (c) 2017 EXVO developers
+# Distributed under the MIT software license, see the accompanying
+# file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
+bin_PROGRAMS += qt/exvo-qt
+EXTRA_LIBRARIES += qt/libexvoqt.a
+
+# exvo qt core #
+QT_TS = \
+  qt/locale/exvo_af.ts \
+  qt/locale/exvo_af_ZA.ts \
+  qt/locale/exvo_ar.ts \
+  qt/locale/exvo_be_BY.ts \
+  qt/locale/exvo_bg_BG.ts \
+  qt/locale/exvo_bg.ts \
+  qt/locale/exvo_ca_ES.ts \
+  qt/locale/exvo_ca.ts \
+  qt/locale/exvo_ca@valencia.ts \
+  qt/locale/exvo_cs.ts \
+  qt/locale/exvo_cy.ts \
+  qt/locale/exvo_da.ts \
+  qt/locale/exvo_de.ts \
+  qt/locale/exvo_el_GR.ts \
+  qt/locale/exvo_el.ts \
+  qt/locale/exvo_en_GB.ts \
+  qt/locale/exvo_en.ts \
+  qt/locale/exvo_eo.ts \
+  qt/locale/exvo_es_AR.ts \
+  qt/locale/exvo_es_CL.ts \
+  qt/locale/exvo_es_CO.ts \
+  qt/locale/exvo_es_DO.ts \
+  qt/locale/exvo_es_ES.ts \
+  qt/locale/exvo_es_MX.ts \
+  qt/locale/exvo_es.ts \
+  qt/locale/exvo_es_UY.ts \
+  qt/locale/exvo_es_VE.ts \
+  qt/locale/exvo_et_EE.ts \
+  qt/locale/exvo_et.ts \
+  qt/locale/exvo_eu_ES.ts \
+  qt/locale/exvo_fa_IR.ts \
+  qt/locale/exvo_fa.ts \
+  qt/locale/exvo_fi.ts \
+  qt/locale/exvo_fr_CA.ts \
+  qt/locale/exvo_fr_FR.ts \
+  qt/locale/exvo_fr.ts \
+  qt/locale/exvo_gl.ts \
+  qt/locale/exvo_he.ts \
+  qt/locale/exvo_hi_IN.ts \
+  qt/locale/exvo_hr.ts \
+  qt/locale/exvo_hu.ts \
+  qt/locale/exvo_id_ID.ts \
+  qt/locale/exvo_it_IT.ts \
+  qt/locale/exvo_it.ts \
+  qt/locale/exvo_ja.ts \
+  qt/locale/exvo_ka.ts \
+  qt/locale/exvo_kk_KZ.ts \
+  qt/locale/exvo_ko_KR.ts \
+  qt/locale/exvo_ku_IQ.ts \
+  qt/locale/exvo_ky.ts \
+  qt/locale/exvo_la.ts \
+  qt/locale/exvo_lt.ts \
+  qt/locale/exvo_lv_LV.ts \
+  qt/locale/exvo_mk_MK.ts \
+  qt/locale/exvo_mn.ts \
+  qt/locale/exvo_ms_MY.ts \
+  qt/locale/exvo_nb.ts \
+  qt/locale/exvo_ne.ts \
+  qt/locale/exvo_nl.ts \
+  qt/locale/exvo_pam.ts \
+  qt/locale/exvo_pl.ts \
+  qt/locale/exvo_pt_BR.ts \
+  qt/locale/exvo_pt_PT.ts \
+  qt/locale/exvo_ro_RO.ts \
+  qt/locale/exvo_ro.ts \
+  qt/locale/exvo_ru_RU.ts \
+  qt/locale/exvo_ru.ts \
+  qt/locale/exvo_sk.ts \
+  qt/locale/exvo_sl_SI.ts \
+  qt/locale/exvo_sq.ts \
+  qt/locale/exvo_sr@latin.ts \
+  qt/locale/exvo_sr.ts \
+  qt/locale/exvo_sv.ts \
+  qt/locale/exvo_ta.ts \
+  qt/locale/exvo_th_TH.ts \
+  qt/locale/exvo_tr_TR.ts \
+  qt/locale/exvo_tr.ts \
+  qt/locale/exvo_uk.ts \
+  qt/locale/exvo_ur_PK.ts \
+  qt/locale/exvo_uz@Cyrl.ts \
+  qt/locale/exvo_vi.ts \
+  qt/locale/exvo_vi_VN.ts \
+  qt/locale/exvo_zh_CN.ts \
+  qt/locale/exvo_zh_HK.ts \
+  qt/locale/exvo_zh.ts \
+  qt/locale/exvo_zh_TW.ts
+
+QT_FORMS_UI = \
+  qt/forms/addressbookpage.ui \
+  qt/forms/askpassphrasedialog.ui \
+  qt/forms/coincontroldialog.ui \
+  qt/forms/editaddressdialog.ui \
+  qt/forms/helpmessagedialog.ui \
+  qt/forms/intro.ui \
+  qt/forms/modaloverlay.ui \
+  qt/forms/openuridialog.ui \
+  qt/forms/optionsdialog.ui \
+  qt/forms/overviewpage.ui \
+  qt/forms/receivecoinsdialog.ui \
+  qt/forms/receiverequestdialog.ui \
+  qt/forms/debugwindow.ui \
+  qt/forms/sendcoinsdialog.ui \
+  qt/forms/sendcoinsentry.ui \
+  qt/forms/signverifymessagedialog.ui \
+  qt/forms/transactiondescdialog.ui \
+  qt/forms/masternodelist.ui
+
+QT_MOC_CPP = \
+  qt/moc_addressbookpage.cpp \
+  qt/moc_addresstablemodel.cpp \
+  qt/moc_askpassphrasedialog.cpp \
+  qt/moc_bantablemodel.cpp \
+  qt/moc_exvoaddressvalidator.cpp \
+  qt/moc_exvoamountfield.cpp \
+  qt/moc_exvogui.cpp \
+  qt/moc_exvounits.cpp \
+  qt/moc_clientmodel.cpp \
+  qt/moc_coincontroldialog.cpp \
+  qt/moc_coincontroltreewidget.cpp \
+  qt/moc_csvmodelwriter.cpp \
+  qt/moc_editaddressdialog.cpp \
+  qt/moc_guiutil.cpp \
+  qt/moc_intro.cpp \
+  qt/moc_macdockiconhandler.cpp \
+  qt/moc_macnotificationhandler.cpp \
+  qt/moc_modaloverlay.cpp \
+  qt/moc_notificator.cpp \
+  qt/moc_openuridialog.cpp \
+  qt/moc_optionsdialog.cpp \
+  qt/moc_optionsmodel.cpp \
+  qt/moc_overviewpage.cpp \
+  qt/moc_peertablemodel.cpp \
+  qt/moc_paymentserver.cpp \
+  qt/moc_qvalidatedlineedit.cpp \
+  qt/moc_qvaluecombobox.cpp \
+  qt/moc_receivecoinsdialog.cpp \
+  qt/moc_receiverequestdialog.cpp \
+  qt/moc_recentrequeststablemodel.cpp \
+  qt/moc_rpcconsole.cpp \
+  qt/moc_sendcoinsdialog.cpp \
+  qt/moc_sendcoinsentry.cpp \
+  qt/moc_signverifymessagedialog.cpp \
+  qt/moc_splashscreen.cpp \
+  qt/moc_trafficgraphwidget.cpp \
+  qt/moc_transactiondesc.cpp \
+  qt/moc_transactiondescdialog.cpp \
+  qt/moc_transactionfilterproxy.cpp \
+  qt/moc_transactiontablemodel.cpp \
+  qt/moc_transactionview.cpp \
+  qt/moc_utilitydialog.cpp \
+  qt/moc_walletframe.cpp \
+  qt/moc_walletmodel.cpp \
+  qt/moc_walletview.cpp \
+  qt/moc_masternodelist.cpp
+
+EXVO_MM = \
+  qt/macdockiconhandler.mm \
+  qt/macnotificationhandler.mm
+
+QT_MOC = \
+  qt/exvo.moc \
+  qt/exvoamountfield.moc \
+  qt/intro.moc \
+  qt/overviewpage.moc \
+  qt/rpcconsole.moc
+
+QT_QRC_CPP = qt/qrc_exvo.cpp
+QT_QRC = qt/exvo.qrc
+QT_QRC_LOCALE_CPP = qt/qrc_exvo_locale.cpp
+QT_QRC_LOCALE = qt/exvo_locale.qrc
+
+PROTOBUF_CC = qt/paymentrequest.pb.cc
+PROTOBUF_H = qt/paymentrequest.pb.h
+PROTOBUF_PROTO = qt/paymentrequest.proto
+
+EXVO_QT_H = \
+  qt/addressbookpage.h \
+  qt/addresstablemodel.h \
+  qt/askpassphrasedialog.h \
+  qt/bantablemodel.h \
+  qt/exvoaddressvalidator.h \
+  qt/exvoamountfield.h \
+  qt/exvogui.h \
+  qt/exvounits.h \
+  qt/clientmodel.h \
+  qt/coincontroldialog.h \
+  qt/coincontroltreewidget.h \
+  qt/csvmodelwriter.h \
+  qt/editaddressdialog.h \
+  qt/guiconstants.h \
+  qt/guiutil.h \
+  qt/intro.h \
+  qt/macdockiconhandler.h \
+  qt/macnotificationhandler.h \
+  qt/modaloverlay.h \
+  qt/networkstyle.h \
+  qt/notificator.h \
+  qt/openuridialog.h \
+  qt/optionsdialog.h \
+  qt/optionsmodel.h \
+  qt/overviewpage.h \
+  qt/paymentrequestplus.h \
+  qt/paymentserver.h \
+  qt/peertablemodel.h \
+  qt/platformstyle.h \
+  qt/qvalidatedlineedit.h \
+  qt/qvaluecombobox.h \
+  qt/receivecoinsdialog.h \
+  qt/receiverequestdialog.h \
+  qt/recentrequeststablemodel.h \
+  qt/rpcconsole.h \
+  qt/sendcoinsdialog.h \
+  qt/sendcoinsentry.h \
+  qt/signverifymessagedialog.h \
+  qt/splashscreen.h \
+  qt/trafficgraphwidget.h \
+  qt/transactiondesc.h \
+  qt/transactiondescdialog.h \
+  qt/transactionfilterproxy.h \
+  qt/transactionrecord.h \
+  qt/transactiontablemodel.h \
+  qt/transactionview.h \
+  qt/utilitydialog.h \
+  qt/walletframe.h \
+  qt/walletmodel.h \
+  qt/walletmodeltransaction.h \
+  qt/walletview.h \
+  qt/winshutdownmonitor.h \
+  qt/masternodelist.h
+
+RES_ICONS = \
+  qt/res/icons/add.png \
+  qt/res/icons/address-book.png \
+  qt/res/icons/about.png \
+  qt/res/icons/about_qt.png \
+  qt/res/icons/exvo_ic.ico \
+  qt/res/icons/exvo_testnet.ico \
+  qt/res/icons/exvo.png \
+  qt/res/icons/chevron.png \
+  qt/res/icons/clock1.png \
+  qt/res/icons/clock2.png \
+  qt/res/icons/clock3.png \
+  qt/res/icons/clock4.png \
+  qt/res/icons/clock5.png \
+  qt/res/icons/configure.png \
+  qt/res/icons/connect0.png \
+  qt/res/icons/connect1.png \
+  qt/res/icons/connect2.png \
+  qt/res/icons/connect3.png \
+  qt/res/icons/connect4.png \
+  qt/res/icons/connect0_16.png \
+  qt/res/icons/connect1_16.png \
+  qt/res/icons/connect2_16.png \
+  qt/res/icons/connect3_16.png \
+  qt/res/icons/connect4_16.png \
+  qt/res/icons/debugwindow.png \
+  qt/res/icons/edit.png \
+  qt/res/icons/editcopy.png \
+  qt/res/icons/editpaste.png \
+  qt/res/icons/export.png \
+  qt/res/icons/eye.png \
+  qt/res/icons/eye_minus.png \
+  qt/res/icons/eye_plus.png \
+  qt/res/icons/filesave.png \
+  qt/res/icons/fontbigger.png \
+  qt/res/icons/fontsmaller.png \
+  qt/res/icons/hd_disabled.png \
+  qt/res/icons/hd_enabled.png \
+  qt/res/icons/history.png \
+  qt/res/icons/info.png \
+  qt/res/icons/key.png \
+  qt/res/icons/lock_closed.png \
+  qt/res/icons/lock_open.png \
+  qt/res/icons/network_disabled.png \
+  qt/res/icons/open.png \
+  qt/res/icons/overview.png \
+  qt/res/icons/quit.png \
+  qt/res/icons/receive.png \
+  qt/res/icons/remove.png \
+  qt/res/icons/send.png \
+  qt/res/icons/synced.png \
+  qt/res/icons/transaction0.png \
+  qt/res/icons/transaction2.png \
+  qt/res/icons/transaction_abandoned.png \
+  qt/res/icons/transaction_conflicted.png \
+  qt/res/icons/tx_inout.png \
+  qt/res/icons/tx_input.png \
+  qt/res/icons/tx_output.png \
+  qt/res/icons/tx_mined.png \
+  qt/res/icons/warning.png \
+  qt/res/icons/verify.png \
+  qt/res/
+
+EXVO_QT_BASE_CPP = \
+  qt/bantablemodel.cpp \
+  qt/exvoaddressvalidator.cpp \
+  qt/exvoamountfield.cpp \
+  qt/exvogui.cpp \
+  qt/exvounits.cpp \
+  qt/clientmodel.cpp \
+  qt/csvmodelwriter.cpp \
+  qt/guiutil.cpp \
+  qt/intro.cpp \
+  qt/modaloverlay.cpp \
+  qt/networkstyle.cpp \
+  qt/notificator.cpp \
+  qt/optionsdialog.cpp \
+  qt/optionsmodel.cpp \
+  qt/peertablemodel.cpp \
+  qt/platformstyle.cpp \
+  qt/qvalidatedlineedit.cpp \
+  qt/qvaluecombobox.cpp \
+  qt/rpcconsole.cpp \
+  qt/splashscreen.cpp \
+  qt/trafficgraphwidget.cpp \
+  qt/utilitydialog.cpp \
+  qt/masternodelist.cpp
+
+EXVO_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
+
+EXVO_QT_WALLET_CPP = \
+  qt/addressbookpage.cpp \
+  qt/addresstablemodel.cpp \
+  qt/askpassphrasedialog.cpp \
+  qt/coincontroldialog.cpp \
+  qt/coincontroltreewidget.cpp \
+  qt/editaddressdialog.cpp \
+  qt/openuridialog.cpp \
+  qt/overviewpage.cpp \
+  qt/paymentrequestplus.cpp \
+  qt/paymentserver.cpp \
+  qt/receivecoinsdialog.cpp \
+  qt/receiverequestdialog.cpp \
+  qt/recentrequeststablemodel.cpp \
+  qt/sendcoinsdialog.cpp \
+  qt/sendcoinsentry.cpp \
+  qt/signverifymessagedialog.cpp \
+  qt/transactiondesc.cpp \
+  qt/transactiondescdialog.cpp \
+  qt/transactionfilterproxy.cpp \
+  qt/transactionrecord.cpp \
+  qt/transactiontablemodel.cpp \
+  qt/transactionview.cpp \
+  qt/walletframe.cpp \
+  qt/walletmodel.cpp \
+  qt/walletmodeltransaction.cpp \
+  qt/walletview.cpp \
+  qt/masternodelist.cpp
+
+EXVO_QT_CPP = $(EXVO_QT_BASE_CPP)
+if TARGET_WINDOWS
+EXVO_QT_CPP += $(EXVO_QT_WINDOWS_CPP)
+endif
+if ENABLE_WALLET
+EXVO_QT_CPP += $(EXVO_QT_WALLET_CPP)
+endif
+
+RES_CSS = \
+  qt/res/css/exvo_main.css \
+  qt/res/css/exvo_theme1.css \
+  qt/res/css/exvo_theme2.css \
+  qt/res/css/exvo_theme3.css 
+  
+  
+RES_IMAGES = \
+  qt/res/images/about.png \
+  qt/res/images/splash.png \
+  qt/res/images/splash_testnet.png \
+  qt/res/images/paper_wallet.png \
+  qt/res/images/exvo_logo_horizontal.png \
+  qt/res/images/drkblue_downArrow.png \
+  qt/res/images/drkblue_downArrow_small.png \
+  qt/res/images/drkblue_upArrow_small.png \
+  qt/res/images/drkblue_leftArrow_small.png \
+  qt/res/images/drkblue_rightArrow_small.png \
+  qt/res/images/drkblue_qtreeview_selected.png \
+  qt/res/images/exvo_main_hg.png \
+  qt/res/images/exvo_theme1_hg.png \
+  qt/res/images/exvo_theme2_hg.png \
+  qt/res/images/exvo_theme3_hg.png
+
+
+
+RES_MOVIES = $(wildcard $(srcdir)/qt/res/movies/spinner-*.png)
+
+EXVO_RC = qt/res/exvo-qt-res.rc
+
+EXVO_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
+  -I$(builddir)/qt/forms -DQT_NO_KEYWORDS
+
+qt_libexvoqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(EXVO_INCLUDES) $(EXVO_QT_INCLUDES) \
+  $(QT_INCLUDES) $(QT_DBUS_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
+qt_libexvoqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+
+qt_libexvoqt_a_SOURCES = $(EXVO_QT_CPP) $(EXVO_QT_H) $(QT_FORMS_UI) \
+  $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_CSS) $(RES_IMAGES) $(RES_MOVIES) 
+
+nodist_qt_libexvoqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
+  $(PROTOBUF_H) $(QT_QRC_CPP) $(QT_QRC_LOCALE_CPP)
+
+# forms/foo.h -> forms/ui_foo.h
+QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:.ui=.h))))
+
+# Most files will depend on the forms and moc files as includes. Generate them
+# before anything else.
+$(QT_MOC): $(QT_FORMS_H)
+$(qt_libexvoqt_a_OBJECTS) $(qt_exvo_qt_OBJECTS) : | $(QT_MOC)
+
+#Generating these with a half-written protobuf header leads to wacky results.
+#This makes sure it's done.
+$(QT_MOC): $(PROTOBUF_H)
+$(QT_MOC_CPP): $(PROTOBUF_H)
+
+# exvo-qt binary #
+qt_exvo_qt_CPPFLAGS = $(AM_CPPFLAGS) $(EXVO_INCLUDES) $(EXVO_QT_INCLUDES) \
+  $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
+qt_exvo_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+
+qt_exvo_qt_SOURCES = qt/exvo.cpp
+if TARGET_DARWIN
+  qt_exvo_qt_SOURCES += $(EXVO_MM)
+endif
+if TARGET_WINDOWS
+  qt_exvo_qt_SOURCES += $(EXVO_RC)
+endif
+qt_exvo_qt_LDADD = qt/libexvoqt.a $(LIBEXVO_SERVER)
+if ENABLE_WALLET
+qt_exvo_qt_LDADD += $(LIBEXVO_WALLET)
+endif
+if ENABLE_ZMQ
+qt_exvo_qt_LDADD += $(LIBEXVO_ZMQ) $(ZMQ_LIBS)
+endif
+qt_exvo_qt_LDADD += $(LIBEXVO_CLI) $(LIBEXVO_COMMON) $(LIBEXVO_UTIL) $(LIBEXVO_CONSENSUS) $(LIBEXVO_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBMEMENV) \
+  $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
+  $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
+qt_exvo_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_exvo_qt_LIBTOOLFLAGS = --tag CXX
+
+#locale/foo.ts -> locale/foo.qm
+QT_QM=$(QT_TS:.ts=.qm)
+
+SECONDARY: $(QT_QM)
+
+$(srcdir)/qt/exvostrings.cpp: $(libexvo_server_a_SOURCES) $(libexvo_wallet_a_SOURCES) $(libexvo_common_a_SOURCES) $(libexvo_zmq_a_SOURCES) $(libexvo_consensus_a_SOURCES) $(libexvo_util_a_SOURCES)
+	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
+	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) PACKAGE_NAME="$(PACKAGE_NAME)" COPYRIGHT_HOLDERS="$(COPYRIGHT_HOLDERS)" COPYRIGHT_HOLDERS_SUBSTITUTION="$(COPYRIGHT_HOLDERS_SUBSTITUTION)" $(PYTHON) ../share/qt/extract_strings_qt.py $^
+
+translate: $(srcdir)/qt/exvostrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(EXVO_QT_BASE_CPP) qt/exvo.cpp $(EXVO_QT_WINDOWS_CPP) $(EXVO_QT_WALLET_CPP) $(EXVO_QT_H) $(EXVO_MM)
+	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/exvo_en.ts
+
+$(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
+	@test -f $(RCC)
+	@cp -f $< $(@D)/temp_$(<F)
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name exvo_locale $(@D)/temp_$(<F) | \
+	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
+	@rm $(@D)/temp_$(<F)
+
+$(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES) $(RES_CSS) $(PROTOBUF_H)
+	@test -f $(RCC)
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name exvo $< | \
+	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
+
+CLEAN_QT = $(nodist_qt_libexvoqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno
+
+CLEANFILES += $(CLEAN_QT)
+
+exvo_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libexvoqt_a_OBJECTS) $(qt_exvo_qt_OBJECTS) qt/exvo-qt$(EXEEXT) $(LIBEXVOQT)
+
+exvo_qt : qt/exvo-qt$(EXEEXT)
+
+ui_%.h: %.ui
+	@test -f $(UIC)
+	@$(MKDIR_P) $(@D)
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(UIC) -o $@ $< || (echo "Error creating $@"; false)
+
+%.moc: %.cpp
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(MOC) $(DEFAULT_INCLUDES) $(QT_INCLUDES) $(MOC_DEFS) $< | \
+	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
+
+moc_%.cpp: %.h
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(MOC) $(DEFAULT_INCLUDES) $(QT_INCLUDES) $(MOC_DEFS) $< | \
+	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
+
+%.qm: %.ts
+	@test -f $(LRELEASE)
+	@$(MKDIR_P) $(@D)
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LRELEASE) -silent $< -qm $@
