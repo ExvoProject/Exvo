@@ -1,6 +1,6 @@
-EXVO Core
+![EXVO Core](https://i.imgur.com/TCJxWxo.png)
 
-[Website](https://exvo.io) — [Block Explorer](https://explorer.exvo.io/) — [Twitter](https://twitter.com/ExvoProject)
+[Website](https://exvo.io) — [Block Explorer](https://explorer.exvo.io/) — [Exchange](https://exvo.io/markets/exvobtc) — [Discord](https://discord.gg/83EMs) — [Twitter](https://twitter.com/ExvoProject)
 
 Features
 =============
